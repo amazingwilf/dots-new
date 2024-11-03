@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+case $BLOCK_BUTTON in
+    1) date.sh ;;
+esac
+
+fg="^c#aaaaaa^"
+icon="^c#61afef^"
+
+echo "  $icon󰅐 $fg$(date '+%l:%M %P')  ^d^"

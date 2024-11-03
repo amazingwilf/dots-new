@@ -1,0 +1,45 @@
+#!/bin/sh
+brightness=$(light)
+brightness=$(printf "%.0f" $brightness)
+
+if [[ ("$brightness" -ge "0") ]] && [[ ("$brightness" -le "9" ) ]]; then
+	icon=" "
+elif [[ ("$brightness" -ge "10") ]] && [[ ("$brightness" -le "19" ) ]]; then
+	icon=" "
+elif [[ ("$brightness" -ge "20") ]] && [[ ("$brightness" -le "29" ) ]]; then
+	icon=" "
+elif [[ ("$brightness" -ge "30") ]] && [[ ("$brightness" -le "39" ) ]]; then
+	icon=" "
+elif [[ ("$brightness" -ge "40") ]] && [[ ("$brightness" -le "49" ) ]]; then
+	icon=" "
+elif [[ ("$brightness" -ge "50") ]] && [[ ("$brightness" -le "59" ) ]]; then
+	icon=" "
+elif [[ ("$brightness" -ge "60") ]] && [[ ("$brightness" -le "69" ) ]]; then
+	icon=" "
+elif [[ ("$brightness" -ge "70") ]] && [[ ("$brightness" -le "79" ) ]]; then
+	icon=" "
+elif [[ ("$brightness" -ge "80") ]] && [[ ("$brightness" -le "89" ) ]]; then
+	icon=" "
+elif [[ ("$brightness" -ge "90") ]] && [[ ("$brightness" -le "100" ) ]]; then
+	icon=" "
+else
+	icon="? "
+fi
+
+echo "^C3^$icon$brightness%^d^"
+
+# case $BLOCK_BUTTON in
+# 	1) /usr/local/bin/statusbar/changelight ;;
+# 	3) notify-send "Backlight brightness module" "Shows backlight brightness percentage using \`light\`\n\-Left click to run \`changelight\`"
+# 	4) brightness --inc ;;
+# 	5) brightness --dec ;;
+# esac
+
+
+
+case "$BLOCK_BUTTON" in
+    1) /usr/local/bin/statusbar/changelight ;;
+    4) brightness --inc ;;
+    5) brightness --dec ;;
+esac
+
