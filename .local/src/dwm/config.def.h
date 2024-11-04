@@ -3,6 +3,7 @@
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 20;       /* horiz outer gap between windows and screen edge */
@@ -64,9 +65,10 @@ static const Rule rules[] = {
 	 */
 	{ .class = "Lxappearance", .isfloating = 1, .floatpos = "50% 50% -1w -1h" },
 	{ .class = "pavucontrol", .isfloating = 1, .floatpos = "50% 50% -1w -1h" },
-	{ .class = "Alacritty", .tags = 1 << 0 },
+	{ .class = "Alacritty", .tags = 1 << 0, .isterminal = 1 },
 	{ .class = "Firefox", .tags = 1 << 1 },
 	{ .class = "Thunar", .tags = 1 << 2 },
+	{ .title = "Event Tester", .noswallow = 1 },
 };
 
 /* layout(s) */
