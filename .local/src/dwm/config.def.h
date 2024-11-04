@@ -69,6 +69,7 @@ static const Rule rules[] = {
 	{ .class = "Firefox", .tags = 1 << 1 },
 	{ .class = "Thunar", .tags = 1 << 2 },
 	{ .title = "Event Tester", .noswallow = 1 },
+	{ .class = "spterm", .scratchkey = 't', .isfloating = 1, .floatpos = "50% 50% 80% 80%" },
 };
 
 /* layout(s) */
@@ -118,6 +119,8 @@ static const char *roficmd[]  	= { "rofi", "-show", "drun", NULL };
 static const char *webcmd[]		= { "firefox", NULL };
 static const char *fmcmd[]		= { "thunar", NULL };
 
+static const char *sptermcmd[]	= { "t", "alacritty", "--class", "spterm,spterm", NULL}; 
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
@@ -145,9 +148,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,						XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY,           			XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
+	{ MODKEY,                       XK_grave,  togglescratch,  {.v = sptermcmd } },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_Right,  viewnext,       {0} },
